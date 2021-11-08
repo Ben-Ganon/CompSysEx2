@@ -26,9 +26,17 @@ magnitude multi(magnitude a, magnitude b) {
 }
 
 int equal(magnitude a, magnitude b) {
-
-} // a = b
-int greater(magnitude a, magnitude b); // a > b
+    int aInt = toInt(a);
+    int bInt = toInt(b);
+    int c = aInt == bInt;
+    return c;
+}
+int greater(magnitude a, magnitude b) {
+    int aInt = toInt(a);
+    int bInt = toInt(b);
+    int c = aInt > bInt;
+    return c;
+}
 
 magnitude toMagnitude(int x) {
     if (x >= 0) {
@@ -39,12 +47,10 @@ magnitude toMagnitude(int x) {
 }
 
 int toInt(magnitude x) {
-    //TODO: add edge case of int_min
     if (!(x & INT_MIN)) {
         return x;
     }
     x = x & INT_MAX;
-    int ret =x;
     return -x;
 }
 

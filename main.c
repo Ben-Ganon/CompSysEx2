@@ -1,13 +1,15 @@
-#include <stdio.h>
+//#include <stdio.h>
 #include "ex2.h"
-#include "math.h"
+//#include "math.h"
 #include <limits.h>
 
+#include <stdio.h>
+
 int main() {
-    unsigned int x = 0xffffffff;
-    unsigned int y = 0x00000001;
-    int min = INT_MIN;
-    printf("%x\n", sub(x, y));
-    printf("%x", toInt(min));
-    return 0;
+    printf("%d\n", multi(10, 5));
+    printf("%d\n", add(-1, 4));
+    printf("%d\n", sub(8, -3));
+    printf("%d\n", equal(4, 4));
+    printf("%d\n", greater(4, 4));
+    printf("%d\n", multi(1, add(3, 5)));
 }
