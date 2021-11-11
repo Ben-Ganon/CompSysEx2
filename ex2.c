@@ -8,10 +8,10 @@
 magnitude add(magnitude a, magnitude b) {
     int aInt = toInt(a);
     int bInt = toInt(b);
-    if (aInt > 0 && bInt > 0 && (aInt + bInt) < 0) {
+    if (aInt > 0 && bInt > 0 && (aInt + bInt) <= 0) {
         return toMagnitude((a + b + INT_MAX) + 1);
     }
-    else if (aInt < 0 && bInt < 0 && (aInt + bInt) > 0) {
+    else if (aInt < 0 && bInt < 0 && (aInt + bInt) >= 0) {
         return toMagnitude(aInt + bInt -INT_MAX + 1);
     }
     else return toMagnitude(aInt + bInt);
