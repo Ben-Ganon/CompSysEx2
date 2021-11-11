@@ -8,21 +8,27 @@
 magnitude add(magnitude a, magnitude b) {
     int aInt = toInt(a);
     int bInt = toInt(b);
-    int c = aInt + bInt;
-    return toMagnitude(c);
+    if (aInt > 0 && bInt > 0 && (aInt + bInt) < 0) {
+        return toMagnitude((a + b + INT_MAX) + 1);
+    }
+    else if (aInt < 0 && bInt < 0 && (aInt + bInt) > 0) {
+        return toMagnitude(aInt + bInt -INT_MAX + 1);
+    }
+    else return toMagnitude(aInt + bInt);
 }
 
 magnitude sub(magnitude a, magnitude b) {
     int aInt = toInt(a);
     int bInt = toInt(b);
-    int c = aInt - bInt;
-    return toMagnitude(c);
+    bInt = -bInt;
+    return add(toMagnitude(aInt), toMagnitude(bInt));
 }
 magnitude multi(magnitude a, magnitude b) {
-    int aInt = toInt(a);
-    int bInt = toInt(b);
-    int c = aInt * bInt;
-    return toMagnitude(c);
+    magnitude c = a;
+    for (int i = 1; i < toInt(b); i++) {
+        c = add(c, a);
+    }
+    return c;
 }
 
 int equal(magnitude a, magnitude b) {
@@ -50,7 +56,7 @@ int toInt(magnitude x) {
     if (!(x & INT_MIN)) {
         return x;
     }
-    x = x & INT_MAX;
-    return -x;
+    int z = x & INT_MAX;
+    return -z;
 }
 
